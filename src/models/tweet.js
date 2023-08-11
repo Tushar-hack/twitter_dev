@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const tweetSchema = new mongoose.Schema({
     content: {
         type: String,
-        minlength: [250, 'Tweet cannot be more than 250 characters'],
+        min: [250, 'Tweet cannot be more than 250 characters'],
         required: true
     },
     hashtags: [
