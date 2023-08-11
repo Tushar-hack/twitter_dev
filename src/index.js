@@ -1,17 +1,11 @@
-const express = require('express');
+import express from "express";
 const app = express();
 
-const connect = require('./config/dbConfig');
-const {PORT} = require('./config/config'); 
+import {connect} from './config/dbConfig.js';
+import {PORT} from './config/config.js'; 
 
-const tweetService = require('./services/tweetService');
 
 app.listen(PORT,async () => {
     console.log(`Server started on port ${PORT}`);
     await connect();
-    const repo = new tweetService();
-    const first = await repo.create({
-        content: 'This is my #first tweet #excited'
-    });
-    console.log(first);
 });
