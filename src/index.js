@@ -6,6 +6,7 @@ import {connect} from './config/dbConfig.js';
 import {PORT} from './config/config.js';
 import v1ApiRoutes from './routes/index.js'; 
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
