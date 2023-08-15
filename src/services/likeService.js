@@ -21,8 +21,8 @@ class LikeService {
             user: userId
         });
         if(exist) {
-            likeable[0].likes.pull(exist.id);
-            await likeable[0].save();
+            likeable.likes.pull(exist.id);
+            await likeable.save();
             await this.LikeRepository.destroy(exist.id);
             var isRemoved = true;
         }else {
@@ -31,8 +31,8 @@ class LikeService {
                 onModel: modelType,
                 likeable: modelId
             });
-            likeable[0].likes.push(newLike.id);
-            await likeable[0].save();
+            likeable.likes.push(newLike.id);
+            await likeable.save();
             isRemoved = false;
         }
         return isRemoved;
