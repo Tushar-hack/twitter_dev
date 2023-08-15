@@ -22,6 +22,27 @@ const createTweet = async (req, res) => {
     }
 }
 
+const getTweet = async (req, res) => {
+    try {
+        const tweets = await tweetService.get(req.params.id);
+        return res.status(201).json({
+            data: tweets,
+            success: true,
+            message: 'Successfully fetched the tweets',
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Something went wrong in tweet Controller in getTweet',
+            err: error
+        });
+    }
+}
+
 export {
-    createTweet
+    createTweet,
+    getTweet
 }
