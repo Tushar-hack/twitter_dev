@@ -14,7 +14,6 @@ class LikeService {
         }else{
             throw console.error('Something wrong');
         }
-        console.log(likeable);
         const exist = await this.LikeRepository.findByUserAndLikeable({
             onModel: modelType,
             likeable: modelId,
