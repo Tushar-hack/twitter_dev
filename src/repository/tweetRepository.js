@@ -33,6 +33,14 @@ class TweetRepository extends CRUDRepository {
         }
     }
 
+    async getByCustom (data) {
+        try {
+            const tweet = await Tweet.find(data);
+            return tweet;
+        } catch (error) {
+            console.log('Something went wrong at Repository Layer in getByCustom');
+        }
+    }
 }
 
 export default TweetRepository;
