@@ -16,7 +16,7 @@ class CommentService {
             }else{
                 throw new Error('Unknown Model Type.')
             }
-
+            console.log(commentable);
             const comment = await this.commentRepository.create({
                 content: content,
                 onModel: modelType,

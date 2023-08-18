@@ -4,6 +4,6 @@ const router = express.Router();
 
 import tweetRoutes from './v1/index.js';
 
-router.use('/tweet', tweetRoutes);
+router.use('/twitter', tweetRoutes);
 
 export default router;
