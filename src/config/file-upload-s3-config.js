@@ -1,0 +1,28 @@
+import aws from 'aws-sdk';
+import multer from 'multer';
+import multerS3 from 'multer-s3';
+
+
+aws.config.update({
+    region: AWS_REGION,
+    secretAccessKey: AWS_SECRET-ACCESS_KEY,
+    accessKeyId: AWS_ACCESS_KEY_ID
+});
+
+const s3 = aws.S3();
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: BUCKET_NAME,
+        acl: 'public-read',
+        metadata: function (req, file, cb) {
+            cb(null, {fieldName: file.fieldname});
+        },
+        key: function (req, file, cb) {
+            cb(null,"tweet" + Date.now().toString());
+        }
+    })
+});
+
+export default upload;
